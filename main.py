@@ -1,20 +1,19 @@
-from utils.data_processor import calculate_total_sales
-from utils.file_handler import save_result
+from utils.file_handler import read_sales_data
+from utils.data_processor import parse_sales_data, total_sales
 
-print("Sales Analytics System started")
+def main():
+    print("Day 2 started")
 
-file_path = "data/sales_data.txt"
+    file_path = "data/sales_data.txt"
 
-with open(file_path, "r") as file:
-    lines = file.readlines()
+    raw_lines = read_sales_data(file_path)
+    records = parse_sales_data(raw_lines)
 
-print("Sales data loaded successfully")
+    print("Total records:", len(records))
+    print("Total sales amount:", total_sales(records))
 
-total_sales = calculate_total_sales(lines)
-print("Total Sales Amount:", total_sales)
-
-save_result(total_sales)
-print("Result saved to output/result.txt")
+if __name__ == "__main__":
+    main()
 
 
     
