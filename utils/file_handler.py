@@ -30,3 +30,5 @@ def read_sales_data(filename):
 
     print("ERROR: Could not read file with available encodings.")
     return []
+
+
